@@ -3,9 +3,6 @@ import {Card, CardBody, CardImg, CardText, CardTitle} from "reactstrap";
 
 
 class DishDetail extends  Component{
-    constructor(props) {
-        super(props);
-    }
 
     renderDish(dish) {
         if (dish != null)
