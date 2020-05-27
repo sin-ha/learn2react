@@ -1,4 +1,6 @@
 import React from "react";
+import {Link} from "react-router-dom";
+
 
 function FooterComponent() {
     return(
@@ -8,12 +10,10 @@ function FooterComponent() {
                     <div className="col-4 col-sm-2">
                         <h5>Links</h5>
                         <ul className="list-unstyled">
-                            <li><a href="#"><span className="fa fa-home fa-lg"></span> Home</a></li>
-                            <li><a href="./aboutus.html"><span
-                                className="fa fa-info fa-lg"></span>&nbsp;&nbsp;&nbsp;&nbsp;About</a></li>
-                            <li><a href="#"><span className="fa fa-list fa-lg"></span> Menu</a></li>
-                            <li><a href="./contactus.html"><span
-                                className="fa fa-address-book fa-lg"></span> Contact</a></li>
+                            <li><Link to="/home"><span className="fa fa-home fa-lg"></span> Home</Link></li>
+                            <li><Link to="/aboutus"><span className="fa fa-info fa-lg"></span>&nbsp;&nbsp;&nbsp;&nbsp;About</Link></li>
+                            <li><Link to="/menu"><span className="fa fa-list fa-lg"></span> Menu</Link></li>
+                            <li><Link to="/contactus"><span className="fa fa-address-book fa-lg"></span> Contact</Link></li>
                         </ul>
                     </div>
                     <div className="col-7 col-sm-5">
