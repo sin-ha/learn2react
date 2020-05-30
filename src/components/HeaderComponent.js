@@ -46,10 +46,10 @@ class HeaderComponent extends Component{
 
 
 
-            <header class="jumbotron">
-                <div class = "container row-header">
-                    <div class="row">
-                        <div class="col-12 col-sm-6">
+            <header className="jumbotron">
+                <div className = "container row-header">
+                    <div className="row">
+                        <div className="col-12 col-sm-6">
                             <h1>Ristorante con Fusion</h1>
                             <p>We take inspiration from the World's best cuisines, and create a unique fusion experience. Our lipsmacking creations will tickle your culinary senses!</p>
                         </div>
