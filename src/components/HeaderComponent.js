@@ -1,5 +1,8 @@
 import React, {Component} from "react";
-import {Navbar, NavbarBrand, NavbarToggler, Collapse, Nav, NavItem, } from "reactstrap";
+import {
+    Navbar, NavbarBrand, NavbarToggler, Collapse, Nav, NavItem,
+    Button, Modal, ModalHeader, ModalBody, FormGroup, Label, Input, Form
+} from "reactstrap";
 import {NavLink} from "react-router-dom";
 
 class HeaderComponent extends Component{
@@ -8,7 +11,11 @@ class HeaderComponent extends Component{
 
         this.state={
             isNavOpen : false ,
+            isModalOpen : false
         }
+    this.toggleModal = this.toggleModal.bind(this)
+    this.toggleNav = this.toggleNav.bind(this)
+    this.handleLogin = this.handleLogin.bind(this)
     }
 
   toggleNav = () => {
@@ -16,6 +23,17 @@ class HeaderComponent extends Component{
                 isNavOpen : !this.state.isNavOpen
             }
         )
+    }
+    toggleModal(){
+        this.setState({
+            isModalOpen : !this.state.isModalOpen
+        })
+    }
+    handleLogin(event){
+        this.toggleModal();
+        alert("Username: " + this.username.value + " PasswordChars: " + this.password.value.length
+            + " Remember: " + this.remember.checked);
+        event.preventDefault()
     }
 
     render() {
@@ -40,6 +58,13 @@ class HeaderComponent extends Component{
                                 <NavLink className="nav-link" to='/contactus'><span className="fa fa-address-card fa-lg"></span> Contact Us</NavLink>
                             </NavItem>
                         </Nav>
+                        <Nav className="ml-auto" navbar>
+                            <NavItem>
+                                <Button  onClick={this.toggleModal} className="btn-success">
+                                    <span className="fa fa-sign-in fa-lg"> Sign in</span>
+                                </Button>
+                            </NavItem>
+                        </Nav>
                     </Collapse>
                 </div>
             </Navbar>
@@ -59,7 +84,42 @@ class HeaderComponent extends Component{
                 </div>
             </div>
 
-    </header>
+            </header>
+            <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
+                <ModalHeader>
+
+                    <div className="row">
+                        Login
+                    <div   onClick={this.toggleModal}>
+
+                        <i className="fa fa-close mr-auto">close</i>
+                    </div>
+                    </div>
+
+                </ModalHeader>
+                <ModalBody>
+                    <Form onSubmit={this.handleLogin}>
+                        <FormGroup>
+                            <Label htmlFor="username">Username</Label>
+                            <Input type="text" id="username" name="username"
+                                   innerRef={(input) => this.username = input} />
+                        </FormGroup>
+                        <FormGroup>
+                            <Label htmlFor="password">Password</Label>
+                            <Input type="password" id="password" name="password"
+                                   innerRef={(input) => this.password = input}  />
+                        </FormGroup>
+                        <FormGroup check>
+                            <Label check>
+                                <Input type="checkbox" name="remember"
+                                       innerRef={(input) => this.remember = input}  />
+                                Remember me
+                            </Label>
+                        </FormGroup>
+                        <Button type="submit" value="submit" color="primary">Login</Button>
+                    </Form>
+                </ModalBody>
+            </Modal>
             </>
         )
     }
