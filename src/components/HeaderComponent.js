@@ -85,17 +85,9 @@ class HeaderComponent extends Component{
             </div>
 
             </header>
-            <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
-                <ModalHeader>
-
-                    <div className="row">
-                        Login
-                    <div   onClick={this.toggleModal}>
-
-                        <i className="fa fa-close mr-auto">close</i>
-                    </div>
-                    </div>
-
+            <Modal isOpen={this.state.isModalOpen} >
+                <ModalHeader toggle={this.toggleModal}>
+                    Login
                 </ModalHeader>
                 <ModalBody>
                     <Form onSubmit={this.handleLogin}>
