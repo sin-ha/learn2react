@@ -70,3 +70,6 @@ address{
     bottom: 0px;
     z-index: 1;
 }
+.button1{
+    padding: 10px 5px 10px 5px;
+}

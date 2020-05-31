@@ -23,6 +23,7 @@ class ContactUs extends Component{
 
         alert("Submitted see logs")
 
+
         //event.preventDefault();
     }
 
