@@ -93,12 +93,8 @@ class DishDetail extends Component {
     handleSubmit(values){
 
         console.log("status is " +JSON.stringify(values))
-
-        this.toggleModal();
-
         alert("Submitted see logs"+ " "+ "status is " +JSON.stringify(values))
-
-
+        this.toggleModal();
     }
 
 
