@@ -4,13 +4,26 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
-### `npm start`
+### `npm start` 
 
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
+
+##### To test the deployment with a database managing JSON erver
+
+### `npm start` 
+##### and parallely deploy the database JSON Server by 
+### `cd json-server`
+### `json-server --watch db.json -d 500 -p 3001`
+
+The JSON server port is configurable by the `-p` parameter 
+However change the serverUrl.js file accordingly in the main project
+
+The `-d` parameter also thus by default gives a 500 ms delay to test real
+time scenarios and can be adjusted without loss of generality.
 
 ### `npm test`
 
