@@ -12,10 +12,10 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
 
-### To test the deployment with a database managing stateless server do
+##### To test the deployment with a database managing JSON erver
 
 ### `npm start` 
-#### and parallaly deploy the database JSON Server by 
+##### and parallely deploy the database JSON Server by 
 ### `cd json-server`
 ### `json-server --watch db.json -d 500 -p 3001`
 
