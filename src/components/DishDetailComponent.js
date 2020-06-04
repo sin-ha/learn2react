@@ -15,14 +15,17 @@ import {Link} from "react-router-dom";
 import {LocalForm,Control,Errors} from"react-redux-form"
 import {Loader} from "./LoadingComponent";
 import {serverUrl} from "../shared/serverUrl";
-
+import {FadeTransform,Fade, Stagger} from "react-animation-components"
 
 
 const RenderDish = (dish)=> {
     dish=dish.dish
     if (dish != null)
         return (
-
+            <FadeTransform in
+                transformProps={{
+                    exitTransform: 'scale(0.5) translateY(-50%)'
+                }}>
             <Card>
                 <CardImg top src={serverUrl + dish.image} alt={dish.name}/>
                 <CardBody>
@@ -30,6 +33,7 @@ const RenderDish = (dish)=> {
                     <CardText>{dish.description}</CardText>
                 </CardBody>
             </Card>
+            </FadeTransform>
 
         );
     else
@@ -47,7 +51,9 @@ const RenderComments = (dish)=> {
 
         comments = allComments.map((comment, i) => {
             return (
+
                 <ul className="list-unstyled" key={comment.id}>
+                    <Fade in>
                     <li>{comment.comment}</li>
                     <li>-- {comment.author}, &nbsp;
                         {new Intl.DateTimeFormat('en-US', {
@@ -55,7 +61,9 @@ const RenderComments = (dish)=> {
                             month: 'long',
                             day: '2-digit'
                         }).format(new Date(comment.date))}</li>
+                    </Fade>
                 </ul>
+
 
             )
         })
@@ -142,7 +150,9 @@ class DishDetail extends Component {
                             <RenderDish dish={this.props.dish}/>
                         </div>
                         <div className="col-12 col-md-5 m-1">
+                            <Stagger in>
                             <RenderComments comments={this.props.comments} postComments={this.props.postComment} dishId={this.props.dishId}/>
+                            </Stagger>
                             <Button onClick={this.toggleModal} outline className="fa fa-pencil fa-lg btn-primary button1"> Submit comment</Button>
                         </div>
                     </div>

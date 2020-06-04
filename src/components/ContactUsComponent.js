@@ -18,12 +18,7 @@ class ContactUs extends Component{
 
     }
     handleSubmit(values){
-
-        console.log("status is " +JSON.stringify(values))
-
-        alert("Submitted see logs")
-
-
+        this.props.postFeedback(values)
         this.props.resetFeedbackForm();
     }
 
