@@ -96,7 +96,7 @@ class DishDetail extends Component {
 
         alert("Submitted see logs"+ " "+ "status is " +JSON.stringify(values))
         console.log(this.props.dish.id,values.rating,values.name,values.comment)
-        this.props.addComment(this.props.dish.id,values.rating,values.name,values.comment)
+        this.props.postComment(this.props.dish.id,values.rating,values.name,values.comment)
         this.toggleModal();
     }
 
@@ -142,7 +142,7 @@ class DishDetail extends Component {
                             <RenderDish dish={this.props.dish}/>
                         </div>
                         <div className="col-12 col-md-5 m-1">
-                            <RenderComments comments={this.props.comments} addComments={this.props.addComment} dishId={this.props.dishId}/>
+                            <RenderComments comments={this.props.comments} postComments={this.props.postComment} dishId={this.props.dishId}/>
                             <Button onClick={this.toggleModal} outline className="fa fa-pencil fa-lg btn-primary button1"> Submit comment</Button>
                         </div>
                     </div>
