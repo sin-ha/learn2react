@@ -146,3 +146,76 @@ export const addComments = (comments) => ({
     type :ActionTypes.ADD_COMMENTS,
     payload : comments
 })
+
+export const fetchLeaders= ()=>(dispatch)=>{
+
+    dispatch(leadersLoading(true));
+
+    return fetch(serverUrl+"leaders")
+        .then(response => {
+                if (response.ok) {
+                    return response;
+                } else {
+                    var error = new Error('Error ' + response.status + ': ' + response.statusText);
+                    error.response = response;
+                    throw error;
+                }
+            },
+            error => {
+                var errmess = new Error(error.message);
+                throw errmess;
+            })
+        .then(response => response.json())
+        .then(leaders => dispatch(addLeaders(leaders)))
+        .catch(errMess => dispatch(leadersFailed(errMess.message)))
+
+}
+
+export const leadersLoading = () =>({
+    type :ActionTypes.LEADERS_LOADING
+})
+export const leadersFailed = (errMess) =>({
+    type : ActionTypes.LEADERS_FAILED,
+    payload:errMess
+})
+
+export const addLeaders = (leaders) => ({
+    type :ActionTypes.ADD_LEADERS,
+    payload : leaders
+})
+
+export const postFeedback = (value)=> (dispatch) =>{
+    const newFeedback = {
+        firstname: value.firstname,
+        lastname: value.lastname,
+        telnum: value.telnum,
+        email: value.email,
+        agree: value.age,
+        contactType: value.contactType,
+        message: value.message,
+    }
+    newFeedback.date = new Date().toISOString();
+    return fetch(serverUrl + 'feedback', {
+        method: "POST",
+        body: JSON.stringify(newFeedback),
+        headers: {
+            "Content-Type": "application/json"
+        },
+        credentials: "same-origin"
+    })
+        .then(response => {
+                if (response.ok) {
+                    return response;
+                } else {
+                    let error = new Error('Error ' + response.status + ': ' + response.statusText);
+                    error.response = response;
+                    throw error;
+                }
+            },
+            error => {
+                throw error;
+            })
+        .then(response => response.json())
+        .then(response=> alert(JSON.stringify(response)))
+        .catch(error =>  { console.log('Form Feedback', error.message); alert('Your ffeedback could not be submitted\nError: '+error.message); });
+}
