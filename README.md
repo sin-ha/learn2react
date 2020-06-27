@@ -1,4 +1,4 @@
-### For a JSON server based deployment switch to `server-intg`
+### For a JSON server based deployment switch to <a href= "https://github.com/sin-ha/learn2react/tree/server-intg">`server-intg`</a>
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
